@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tennis-frontend/static/css/main.b095f8ac.css",
+    "main.js": "/tennis-frontend/static/js/main.0c961ed2.js",
+    "static/js/488.df8c367b.chunk.js": "/tennis-frontend/static/js/488.df8c367b.chunk.js",
+    "index.html": "/tennis-frontend/index.html",
+    "main.b095f8ac.css.map": "/tennis-frontend/static/css/main.b095f8ac.css.map",
+    "main.0c961ed2.js.map": "/tennis-frontend/static/js/main.0c961ed2.js.map",
+    "488.df8c367b.chunk.js.map": "/tennis-frontend/static/js/488.df8c367b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b095f8ac.css",
+    "static/js/main.0c961ed2.js"
+  ]
+}
