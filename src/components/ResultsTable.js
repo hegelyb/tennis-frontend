@@ -98,7 +98,7 @@ export default function ResultsTable({ rows, onEdit, onDelete, order, orderBy, o
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={headCells.length}>
                   <Collapse in={openRow === idx} timeout="auto" unmountOnExit>
                     <Box margin={1}>
                       <Typography variant="subtitle2" color="secondary">Story</Typography>

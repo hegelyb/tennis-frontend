@@ -111,6 +111,23 @@ function App() {
     URL.revokeObjectURL(url);
   };
 
+  // Import CSV handler
+  const handleImport = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      let data = parseCSV(event.target.result);
+      // Ensure all rows have a 'story' field for backward compatibility
+      data = data.map(row => ({ ...row, story: row.story || '' }));
+      dispatch(setRows(data));
+      localStorage.setItem('tennis_results', JSON.stringify(data));
+    };
+    reader.readAsText(file);
+    // Reset input value so same file can be re-imported if needed
+    e.target.value = '';
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -128,6 +145,10 @@ function App() {
         <Statistics rows={filteredRows} />
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2, gap: 2 }}>
           <Button variant="contained" color="primary" onClick={handleAdd}>Add</Button>
+          <Button variant="outlined" color="secondary" component="label">
+            Import CSV
+            <input type="file" accept=".csv" hidden onChange={handleImport} />
+          </Button>
           <Button variant="outlined" color="secondary" onClick={handleExport}>Export CSV</Button>
         </Box>
         <ResultsTable
