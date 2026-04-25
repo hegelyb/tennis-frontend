@@ -41,29 +41,20 @@ function App() {
     setFilters({ from: '', to: '', location: '', court: '' });
   };
 
-  // Load CSV on mount
+
+  // Always load CSV on mount
   useEffect(() => {
-    const local = localStorage.getItem('tennis_results');
-    if (local) {
-      dispatch(setRows(JSON.parse(local)));
-    } else {
-      fetch(process.env.PUBLIC_URL + '/tennis_results.csv')
-        .then((res) => res.text())
-        .then((csv) => {
-          let data = parseCSV(csv);
-          // Ensure all rows have a 'story' field for backward compatibility
-          data = data.map(row => ({ ...row, story: row.story || '' }));
-          dispatch(setRows(data));
-        });
-    }
+    fetch(process.env.PUBLIC_URL + '/tennis_results.csv')
+      .then((res) => res.text())
+      .then((csv) => {
+        let data = parseCSV(csv);
+        // Ensure all rows have a 'story' field for backward compatibility
+        data = data.map(row => ({ ...row, story: row.story || '' }));
+        dispatch(setRows(data));
+      });
   }, [dispatch]);
 
-  // Persist to localStorage
-  useEffect(() => {
-    if (rows.length > 0) {
-      localStorage.setItem('tennis_results', JSON.stringify(rows));
-    }
-  }, [rows]);
+
 
   const handleAdd = () => {
     setEditIndex(null);
