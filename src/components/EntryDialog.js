@@ -93,6 +93,7 @@ export default function EntryDialog({ open, onClose, onSave, initialData }) {
         >
           <MenuItem value="Bence">Bence</MenuItem>
           <MenuItem value="Berec">Berec</MenuItem>
+          <MenuItem value="Draw">Draw</MenuItem>
         </TextField>
         <TextField
           label="1st Set"
